@@ -56,7 +56,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               )),
                           filled: true,
                           fillColor: AppTheme.Grey,
-                          prefixIcon: Icon(Icons.lock),
+                          prefixIcon: Icon(Icons.lock_outlined),
                           hintText: "Password",
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(

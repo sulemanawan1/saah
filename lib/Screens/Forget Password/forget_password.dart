@@ -35,7 +35,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 SizedBox(
                   height: 13,
                 ),
-                MyTextFormField(name: "Email address", icon: Icons.email,textEditingController: emailController,),
+                MyTextFormField(name: "Email address", icon: Icons.email_outlined,textEditingController: emailController,),
 
 
 
