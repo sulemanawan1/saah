@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:saah/App%20Theme/app_theme.dart';
 
 import '../../Widgets/TextForm Filed/textform_field.dart';
-import '../../Widgets/TextForm Filed/textform_field_dob.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -11,11 +9,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
+  bool _isHidden = true;
   DateTime date = new DateTime(2022, 12, 24);
   TextEditingController emailController = new TextEditingController();
   TextEditingController phoneNumberController = new TextEditingController();
   TextEditingController fullNameController = new TextEditingController();
+  TextEditingController dobController = new TextEditingController();
   TextEditingController genderController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
 
@@ -23,9 +22,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:
-
-      SafeArea(
+      home: SafeArea(
         child: Scaffold(
           body: Center(
             child: SingleChildScrollView(
@@ -46,10 +43,15 @@ class _SignUpState extends State<SignUp> {
                   SizedBox(
                     height: 13,
                   ),
-                  MyTextFormField(name: "Email address", icon: Icons.email,textEditingController: emailController,),
+                  MyTextFormField(
+                    name: "Email address",
+                    icon: Icons.email,
+                    textEditingController: emailController,
+                  ),
                   MyTextFormField(
                     name: "Phone Number",
-                    icon: Icons.call,textEditingController: phoneNumberController,
+                    icon: Icons.call,
+                    textEditingController: phoneNumberController,
                   ),
                   MyTextFormField(
                     name: "Full Name",
@@ -67,12 +69,83 @@ class _SignUpState extends State<SignUp> {
                         if (newDate == null) {
                           return;
                         }
+
                         setState(() => date = newDate);
+                        print(date);
+                        setState(() {
+                          date.month;
+                          date.year;
+                          date.day;
+                          dobController.text = date.day.toString() +
+                              "/" +
+                              date.month.toString() +
+                              "/" +
+                              date.year.toString();
+                        });
                       },
-                      child: MyTextFormFieldDob(
-                          name: "Date of Birth", icon: Icons.cake)),
-                  MyTextFormField(name: "Gender", icon: Icons.people,textEditingController: genderController,),
-                  MyTextFormField(name: "Password", icon: Icons.lock,textEditingController: passwordController,),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: 300,
+                          child: TextFormField(
+                            controller: dobController,
+                            enabled: false,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.cake),
+                                hintText: "Date of birth",
+                                fillColor: AppTheme.Grey,
+                                filled: true,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppTheme.LightPastelGreen),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppTheme.LightPastelGreen),
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                          ),
+                        ),
+                      )),
+                  MyTextFormField(
+                    name: "Gender",
+                    icon: Icons.people,
+                    textEditingController: genderController,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 300,
+                      child: TextFormField(
+                        obscureText: _isHidden,
+                        obscuringCharacter: "*",
+                        controller: passwordController,
+                        decoration: InputDecoration(
+                            suffix: GestureDetector(
+                                onTap: _togglePasswordView,
+                                child: Icon(
+                                  _isHidden
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                )),
+                            filled: true,
+                            fillColor: AppTheme.Grey,
+                            prefixIcon: Icon(Icons.lock),
+                            hintText: "Password",
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: AppTheme.LightPastelGreen),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: AppTheme.LightPastelGreen),
+                              borderRadius: BorderRadius.circular(10),
+                            )),
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -80,7 +153,6 @@ class _SignUpState extends State<SignUp> {
                       height: 50,
                       child: ElevatedButton(
                           onPressed: () {
-
                             Navigator.pushNamed(context, '/LogiIn');
                           },
                           style: ElevatedButton.styleFrom(
@@ -98,9 +170,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-
-                    },
+                    onTap: () {},
                     child: Container(
                       width: 220,
                       height: 45,
@@ -135,10 +205,10 @@ class _SignUpState extends State<SignUp> {
                         SizedBox(
                           width: 2,
                         ),
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.pushNamed(context, '/LogiIn');
-                      },
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/LogiIn');
+                          },
                           child: Text(
                             "Sign-in",
                             style: TextStyle(color: AppTheme.DarkPastelGreen),
@@ -154,5 +224,11 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  void _togglePasswordView() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
   }
 }
