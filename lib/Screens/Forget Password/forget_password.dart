@@ -14,14 +14,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   TextEditingController emailController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return
+      Scaffold(
         body: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Icon(
-                  Icons.lock,
+                  Icons.lock_outlined,
                   size: 80,
                   color: AppTheme.LightPastelBlue,
                 ),
@@ -55,7 +55,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     width: 130,
                     height: 50,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+
+                          Navigator.pushNamed(context,'/VerificationCode') ;
+
+                        },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
                           primary: AppTheme.DarkPastelGreen,
@@ -81,9 +85,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       SizedBox(
                         width: 4,
                       ),
-                      Text(
-                        "Sign-up",
-                        style: TextStyle(color: AppTheme.DarkPastelGreen),
+
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context, '/SignUp');
+                        },
+                        child: Text(
+                          "Sign-up",
+                          style: TextStyle(color: AppTheme.DarkPastelGreen),
+                        ),
                       )
                     ],
                   ),
@@ -92,7 +102,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             ),
           ),
         ),
-      ),
+
     );
   }
 }

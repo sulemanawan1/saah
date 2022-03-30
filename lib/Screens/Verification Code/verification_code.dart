@@ -1,20 +1,21 @@
+
 import 'package:flutter/material.dart';
 
 import '../../App Theme/app_theme.dart';
 import '../../Widgets/TextForm Filed/textform_field.dart';
-class ChangePassword extends StatelessWidget {
-  const ChangePassword({Key? key}) : super(key: key);
+class VerificationCode extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return
+     Scaffold(
         body: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Icon(
-                  Icons.lock,
+                  Icons.lock_outlined,
                   size: 80,
                   color: AppTheme.LightPastelBlue,
                 ),
@@ -80,7 +81,11 @@ SizedBox(width: 5,),
                     width: 130,
                     height: 50,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+
+
+                          Navigator.pushNamed(context, '/ChangePassword');
+                        },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
                           primary: AppTheme.DarkPastelGreen,
@@ -106,9 +111,17 @@ SizedBox(width: 5,),
                       SizedBox(
                         width: 4,
                       ),
-                      Text(
-                        "Sign-up",
-                        style: TextStyle(color: AppTheme.DarkPastelGreen,fontSize: 18),
+                      GestureDetector(
+                        onTap: (){
+
+                          Navigator.pushNamed(context, '/SignUp');
+
+
+                        },
+                        child: Text(
+                          "Sign-up",
+                          style: TextStyle(color: AppTheme.DarkPastelGreen,fontSize: 18),
+                        ),
                       )
                     ],
                   ),
@@ -117,7 +130,7 @@ SizedBox(width: 5,),
             ),
           ),
         ),
-      ),
+
     );
   }
 }

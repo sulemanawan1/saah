@@ -20,9 +20,7 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SafeArea(
+    return SafeArea(
         child: Scaffold(
           body: Center(
             child: SingleChildScrollView(
@@ -45,7 +43,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   MyTextFormField(
                     name: "Email address",
-                    icon: Icons.email,
+                    icon: Icons.email_outlined,
                     textEditingController: emailController,
                   ),
                   MyTextFormField(
@@ -55,7 +53,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   MyTextFormField(
                     name: "Full Name",
-                    icon: Icons.person,
+                    icon: Icons.person_outlined,
                     textEditingController: fullNameController,
                   ),
                   GestureDetector(
@@ -90,6 +88,7 @@ class _SignUpState extends State<SignUp> {
                           child: TextFormField(
                             controller: dobController,
                             enabled: false,
+
                             decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.cake),
                                 hintText: "Date of birth",
@@ -110,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                       )),
                   MyTextFormField(
                     name: "Gender",
-                    icon: Icons.people,
+                    icon: Icons.people_outlined,
                     textEditingController: genderController,
                   ),
                   Padding(
@@ -131,7 +130,7 @@ class _SignUpState extends State<SignUp> {
                                 )),
                             filled: true,
                             fillColor: AppTheme.Grey,
-                            prefixIcon: Icon(Icons.lock),
+                            prefixIcon: Icon(Icons.lock_outlined),
                             hintText: "Password",
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
@@ -221,7 +220,7 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
           ),
-        ),
+
       ),
     );
   }

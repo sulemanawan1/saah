@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import '../../App Theme/app_theme.dart';
@@ -10,7 +11,7 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
 
-
+  bool _isHidden = true;
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   @override
@@ -39,13 +40,48 @@ debugShowCheckedModeBanner: false,
                   SizedBox(
                     height: 13,
                   ),
-                  MyTextFormField(name: "Email address", icon: Icons.email,textEditingController: emailController,),
+                  MyTextFormField(name: "Email address", icon: Icons.email_outlined,textEditingController: emailController,),
 
-                  MyTextFormField(name: "Password", icon: Icons.lock,textEditingController: passwordController,),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(42, 10,0, 10),
-                child: Row(
-                  children: [Text("forgot Password?"),],),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 300,
+                      child: TextFormField(
+                        obscureText: _isHidden,
+                        obscuringCharacter: "*",
+                        controller: passwordController,
+                        decoration: InputDecoration(
+                            suffix: GestureDetector(
+                                onTap: _togglePasswordView,
+                                child: Icon(
+                                  _isHidden
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                )),
+                            filled: true,
+                            fillColor: AppTheme.Grey,
+                            prefixIcon: Icon(Icons.lock_outlined),
+                            hintText: "Password",
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: AppTheme.LightPastelGreen),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                              BorderSide(color: AppTheme.LightPastelGreen),
+                              borderRadius: BorderRadius.circular(10),
+                            )),
+                      ),
+                    ),
+                  ),
+              GestureDetector(
+                onTap: (){ Navigator.pushNamed(context,'/ForgetPassword') ;  },
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(42, 10,0, 10),
+                  child: Row(
+                    children: [Text("forgot Password?"),],),
+                ),
               ),
 
                   Padding(
@@ -127,5 +163,10 @@ debugShowCheckedModeBanner: false,
         ),
       ),
     );
+  }
+  void _togglePasswordView() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
   }
 }
