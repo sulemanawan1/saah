@@ -4,6 +4,7 @@ import 'package:saah/Screens/Verification%20Code/verification_code.dart';
 import 'package:saah/Screens/Forget%20Password/forget_password.dart';
 
 import 'Screens/Log In/login.dart';
+import 'Screens/Notification/notification.dart';
 import 'Screens/Sign Up/sign_up.dart';
 
 
@@ -24,6 +25,7 @@ class AppStart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // initialRoute:'/Notification' ,
       debugShowCheckedModeBanner: false,
       home: SignUp(),
       routes: {
@@ -31,7 +33,8 @@ class AppStart extends StatelessWidget {
         '/SignUp':(context)=>SignUp(),
         '/ForgetPassword':(context)=>ForgetPassword(),
         '/ChangePassword':(context)=>ChangePassword(),
-        '/VerificationCode':(context)=> VerificationCode()
+        '/VerificationCode':(context)=> VerificationCode(),
+        '/Notification':(context)=> Notifications(),
 
       },
     );
