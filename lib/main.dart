@@ -3,9 +3,11 @@ import 'package:saah/Screens/Change%20Password/change_password.dart';
 import 'package:saah/Screens/Verification%20Code/verification_code.dart';
 import 'package:saah/Screens/Forget%20Password/forget_password.dart';
 
+
 import 'Screens/Log In/login.dart';
 import 'Screens/Notification/notification.dart';
 import 'Screens/Sign Up/sign_up.dart';
+import 'Screens/Splash/splash.dart';
 
 
 void main()
@@ -27,7 +29,7 @@ class AppStart extends StatelessWidget {
     return MaterialApp(
       // initialRoute:'/Notification' ,
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
+      home: Splash(),
       routes: {
         '/LogiIn':(context)=>LogIn(),
         '/SignUp':(context)=>SignUp(),
