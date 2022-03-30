@@ -114,7 +114,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                       width: 300,
                       child: TextFormField(
                         obscureText: _isHidden,
