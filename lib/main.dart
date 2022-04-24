@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saah/Screens/Change%20Password/change_password.dart';
+import 'package:saah/Screens/Home%20Page/home_page.dart';
 import 'package:saah/Screens/Verification%20Code/verification_code.dart';
 import 'package:saah/Screens/Forget%20Password/forget_password.dart';
 
@@ -37,6 +38,7 @@ class AppStart extends StatelessWidget {
         '/ChangePassword':(context)=>ChangePassword(),
         '/VerificationCode':(context)=> VerificationCode(),
         '/Notification':(context)=> Notifications(),
+        '/HomePage':(context)=> HomePage(),
 
       },
     );
